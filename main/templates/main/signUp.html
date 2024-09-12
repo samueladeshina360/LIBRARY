@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-10 formS">
+        <form method="post">
+            {% csrf_token %}
+        
+            {% for field in form %}
+                {% if field.label != "Password-based authentication" %}
+                    <div class="form-group">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div><br>
+                {% endif %}
+            {% endfor %}
+        
+        
+            <button type="submit" class="btn btn-primary">Register</button><br>
+            <p>Already have an account ? <a href="{% url 'login' %}">login here</a></p>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+    <h1>{{ book.title }}</h1>
+    <main>
+        <div class="main" align="center">
+            <p>{{ book.body }}</p>
+        </div>
+    </main>
+    <br><br><br><br>
+    
+    
+    <div class="footer">
+        <span class="author">Author : <a href="{% url 'profile' book.author %}"> @{{ book.author|lower }}</a></span><br>
+        <span class="author">email : {{ book.author.email|lower }}</span><br>
+        <span class="author">Time stamp : {{ book.date_added|timesince }} ago</span>
+    </div>
+    </div>
+{% endblock %}

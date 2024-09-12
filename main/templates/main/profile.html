@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for book in books %}
+            <div style="clear: both;"></div>
+            <div class="mai">
+                <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="pimga">
+                <p><a href="{% url 'read'  book.id %}">{{ book.title }}</a>
+                    {% if book.body|length != 0 %}
+                        <br>
+                        {{ book.body|slice:'80' }}...<a href="{% url 'read'  book.id %}"> read more</a>
+                    {% else %}
+                        <p>Still Undergoing Production</p>
+                    {% endif %}
+                <p class="date">{{ book.date_added|timesince }} ago</p></p>
+                
+                {% if book.author == request.user or request.user.is_superuser %}
+                <div class="options">
+                    <a href="{% url 'body' book.id %}">EDIT</a>
+                    <a href="{% url 'delete' book.id %}">DELETE</a>
+                </div>
+                {% endif %}
+                <br>
+            </div>
+            
+    {% endfor %}
+
+{% endblock %}

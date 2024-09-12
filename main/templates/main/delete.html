@@ -1,0 +1,23 @@
+<div>
+
+    <div>
+        <h4>
+            Are you sure you want to delete
+        </h4>
+    </div>
+    
+    {{ book.title }}
+    
+    <form method="post">
+    
+        {% csrf_token %}
+    
+        <button type="submit" onclick="pop()">CONFIRM</button>
+    </form>
+</div>
+
+<script>
+    pop => {
+        alert("{{ book.title }} deleted successfully")
+    }
+</script>

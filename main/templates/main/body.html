@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    
+    <form method="post">
+        {% csrf_token %}
+
+        <h4>{{ book.title }}</h4>
+        {% for field in form %}
+            {% if field.label == "Body" %}
+                {{ field }} <br><br>
+            {% endif %}
+        {% endfor %}
+
+        <button type="submit">
+            ADD
+        </button>
+    </form>
+</div>
+{% endblock %}
