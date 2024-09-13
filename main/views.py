@@ -164,3 +164,4 @@ def GenreSpecific(request, genre_name):
     
     context = {'genre':genre}
     return render(request,'main/genre.html', context)
+
