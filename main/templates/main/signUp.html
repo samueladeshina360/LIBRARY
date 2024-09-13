@@ -3,6 +3,7 @@
 {% block content %}
     <div class="col-10 formS">
         <form method="post">
+            <h3 class="display-3 text-center">Sign <p class="badge bg-warning">UP</p></h3>
             {% csrf_token %}
         
             {% for field in form %}

@@ -23,7 +23,7 @@
                     <div class="bod">
                         <div class="top">
                             <br>
-                            {% if request.user == book.author %}
+                            {% if request.user == book.author or request.user.is_superuser %}
                             <p class="options">
                                 <a href="{% url 'body' book.id  %}">EDIT</a>|
                                 <a href="{% url 'delete' book.id %}">DELETE</a>

@@ -1,18 +1,22 @@
-<div style="margin: 20px auto;">
+{% extends 'base.html' %}
 
-    <div>
-        <h4 class="display-2 text-center">
-            Are you sure you want to delete
-        </h4>
+{% block content %}
+    <div style="margin: 20px auto;">
+    
+        <div>
+            <h4 class="display-2 text-center">
+                Are you sure you want to delete
+            </h4>
+        </div>
+        
+        <p class="lead text-center">{{ book.title }}</p>
+        
+        
+        <form method="post" style="margin: 10px auto;">
+        
+            {% csrf_token %}
+        
+            <button type="submit" class="btn btn-primary">CONFIRM</button>
+        </form>
     </div>
-    
-    <p class="lead text-center">{{ book.title }}</p>
-    
-    
-    <form method="post" style="margin: 10px auto;">
-    
-        {% csrf_token %}
-    
-        <button type="submit" class="btn btn-primary">CONFIRM</button>
-    </form>
-</div>
+{% endblock %}
