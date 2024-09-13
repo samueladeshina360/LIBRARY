@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h2>
+        welcome, <a href="{% url 'profile' request.user %}"  style="text-decoration: none;">
+            {{ request.user }}
+        </a>
+
+    </h2><br>
+    
+    {% for genre in genres %}
+        
+        {% if genre.genres.all|length != 0 %}
+
+            <h2 class="genre"><a href="{% url 'genre' genre.genre %}">{{ genre.genre }}</a></h2>
+            <div  class="mainn">
+            
+
+            {% for book in genre.genres.all %}
+
+                {% if book in books %}
+                    <div class="bod">
+                        <div class="top">
+                            <br>
+                            {% if request.user == book.author or request.user.is_superuser %}
+                            <p class="options">
+                                <a href="{% url 'body' book.id  %}">EDIT</a>|
+                                <a href="{% url 'delete' book.id %}">DELETE</a>
+                            </p>
+                            {% endif %}
+                        </div><br><br>
+                        <div>
+                            <p>{{ book.title }}</p>
+                        </div>
+                        
+                        
+                    
+                        <a href="{% url 'read' book.id %}">
+                            <img src="{{ book.cover.url }} " alt="{{ book.title }}" style="width: 200px; height: 150px;border-radius: 20px;object-fit:cover;">
+                        </a>
+                        <br>
+                        <b><p style="width: 200px;max-height: 20px;">author : <a href="{% url 'profile' book.author %}" >{{ book.author }}</a>
+                            <br>
+                            <small>{{ book.date_added|timesince }} ago</small></p><br>
+                            <div style="width: 200px;">
+                                genre : 
+                                {% for genre in book.genre.all %}
+                                    {{ genre }}
+                                    {% if not forloop.last %}
+                                    ,
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </b>
+                        <div id="desc">
+                            <p style="max-height: 100px;overflow-y: auto;max-width: 200px;">{{ book.description }}</p>
+                        </div>
+                    </div>
+
+                
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div style="clear: both;"></div>
+        <br>
+        {% endif %}
+
+    {% endfor %}
+    </div>
+{% endblock %}

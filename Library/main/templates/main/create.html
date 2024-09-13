@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-10 formS">
+        <form method="post" enctype="multipart/form-data">
+            <h3 class="display-3 text-center"><b>CREATE +</b></h3>
+            {% csrf_token %}
+
+            {% for field in form %}
+                {% if field.label != "Body" %}
+                    {{ field.label }} <br>
+                    {{ field }} <br><br>
+                {% endif %}
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">
+                ADD
+            </button>
+        </form>
+    </div>
+
+{% endblock %}
