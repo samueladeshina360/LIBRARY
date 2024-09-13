@@ -12,8 +12,8 @@
                         {{ field }}
                         {% if field.errors %}
                             <div class="error-message">
-                                {% for error in field.error %}
-                                    {{ error }}
+                                {% for error in field.errors %}
+                                    <p class="form-label">{{ error }}</p>
                                 {% endfor %}
                             </div>
                         {% endif %}
