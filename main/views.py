@@ -105,6 +105,7 @@ def SignUp(request):
             user = form.save()
 
             login(request,user)
+            messages.success(request, f"{request.user}, write out your ideas and stories.")
             return redirect('home')
         
         else:
@@ -124,16 +125,17 @@ def LoginUser(request):
         try:
             user = User.objects.get(username=username)
         except:
-            pass
+            messages.error(request,f"{username} doesn't exist.")
 
         user = authenticate(request, username=username, password=password)
 
         if user:
             login(request,user)
+            messages.success(request, f"{request.user}, write out your ideas and stories.")
             return redirect('home')
         
         else:
-            pass
+            messages.error(request,"Username or password doesn't match.")
 
     context = {}
     return render(request, 'main/login.html',context)
