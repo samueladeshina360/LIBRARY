@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br>
+<h2>
+    <marquee behavior="alternate" direction="left" scrollamount="2" scrolldelay="10">
+        {{ user.username }}
+    </marquee>
+</h2>
 
     {% for book in books %}
             <div style="clear: both;"></div>

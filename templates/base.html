@@ -12,16 +12,18 @@
     {% include 'navbar.html' %}
 
     {% if messages %}
-        <ul class="messages">
+        <div class="container-fluid">
             {%for message in messages %}
-                <li  {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-                    {{ message }}
-                </li>
+            <div class="alert alert-primary alert-dismissable fade show" role="alert" style="margin-bottom: 5px;">
+                <strong>{{ message }}</strong>
+                <button class="btn-close" type="button" aria-label="Close"></button>
+            </div>
             {% endfor %}
-        </ul>
+        </div>
     {% endif %}
 
     <div class="container-fluid">
+        <br>
         {% block content %}
         {% endblock %}
     </div>

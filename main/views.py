@@ -134,7 +134,7 @@ def LoginUser(request):
         try:
             user = User.objects.get(username=username)
         except:
-            messages.error(request,f"{username} doesn't exist.")
+            messages.error(request,f"No user named : '{username}'")
 
         user = authenticate(request, username=username, password=password)
 

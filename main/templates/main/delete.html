@@ -1,23 +1,18 @@
-<div>
+<div style="margin: 20px auto;">
 
     <div>
-        <h4>
+        <h4 class="display-2 text-center">
             Are you sure you want to delete
         </h4>
     </div>
     
-    {{ book.title }}
+    <p class="lead text-center">{{ book.title }}</p>
     
-    <form method="post">
+    
+    <form method="post" style="margin: 10px auto;">
     
         {% csrf_token %}
     
-        <button type="submit" onclick="pop()">CONFIRM</button>
+        <button type="submit" class="btn btn-primary">CONFIRM</button>
     </form>
 </div>
-
-<script>
-    pop => {
-        alert("{{ book.title }} deleted successfully")
-    }
-</script>

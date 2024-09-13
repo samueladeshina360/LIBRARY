@@ -42,7 +42,7 @@
                         <br>
                         <b><p style="width: 200px;max-height: 20px;">author : <a href="{% url 'profile' book.author %}" >{{ book.author }}</a>
                             <br>
-                            <small>{{ book.date_added|timesince }} ago</small></p>
+                            <small>{{ book.date_added|timesince }} ago</small></p><br>
                             <div style="width: 200px;">
                                 genre : 
                                 {% for genre in book.genre.all %}
