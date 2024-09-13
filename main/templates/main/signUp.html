@@ -10,6 +10,13 @@
                     <div class="form-group">
                         <label class="form-label">{{ field.label }}</label>
                         {{ field }}
+                        {% if field.errors %}
+                            <div class="error-message">
+                                {% for error in field.error %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div><br>
                 {% endif %}
             {% endfor %}
