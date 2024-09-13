@@ -4,15 +4,15 @@
     <div style="margin: 20px auto;">
     
         <div>
-            <h4 class="display-2 text-center">
+            <h4 class="lead text-center">
                 Are you sure you want to delete
             </h4>
         </div>
         
-        <p class="lead text-center">{{ book.title }}</p>
+        <p class="display-2 text-center">{{ book.title }}</p>
         
         
-        <form method="post" style="margin: 10px auto;">
+        <form method="post">
         
             {% csrf_token %}
         

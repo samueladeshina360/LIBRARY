@@ -51,7 +51,7 @@ def BookBody(request,book_id):
     book = Book.objects.get(id=book_id)
     form = BookForm(instance=book)
 
-    if request.user != book.author:
+    if request.user != book.author and not request.user.is_superuser:
         return redirect('home')
 
     if request.method == "POST":
@@ -84,7 +84,7 @@ def ReadBook(request, book_id):
 def DeleteBook(request, book_id):
     book = Book.objects.get(id=book_id)
 
-    if request.user != book.author:
+    if request.user != book.author and not request.user.is_superuser:
         return redirect('home')
 
     if request.method == "POST" and book:
