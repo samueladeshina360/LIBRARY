@@ -18,6 +18,7 @@ def Home(request):
         Q(author__username__icontains = search) |
         Q(title__icontains = search) |
         Q(description__icontains = search) |
+        Q(genre__genre__icontains = search) |
         Q(body__icontains = search)
     ).all
 
