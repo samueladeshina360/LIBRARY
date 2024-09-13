@@ -18,43 +18,46 @@
             
 
             {% for book in genre.genres.all %}
-                <div class="bod">
-                    <div class="top">
-                        <br>
-                        {% if request.user == book.author %}
-                        <p class="options">
-                            <a href="{% url 'body' book.id  %}">EDIT</a>|
-                            <a href="{% url 'delete' book.id %}">DELETE</a>
-                        </p>
-                        {% endif %}
-                    </div><br><br>
-                    <div>
-                        <p>{{ book.title }}</p>
-                    </div>
-                    
-                    
 
-                    <a href="{% url 'read' book.id %}">
-                        <img src="{{ book.cover.url }} " alt="{{ book.title }}" style="width: 200px; height: 150px;border-radius: 20px;object-fit:cover;">
-                    </a>
-                    <br>
-                    <b><p style="width: 200px;max-height: 20px;">author : <a href="{% url 'profile' book.author %}" >{{ book.author }}</a>
-                        <br>
-                        <small>{{ book.date_added|timesince }} ago</small></p>
-                        <div style="width: 200px;">
-                            genre : 
-                            {% for genre in book.genre.all %}
-                                {{ genre }}
-                                {% if not forloop.last %}
-                                ,
-                                {% endif %}
-                            {% endfor %}
+                {% if book in books %}
+                    <div class="bod">
+                        <div class="top">
+                            <br>
+                            {% if request.user == book.author %}
+                            <p class="options">
+                                <a href="{% url 'body' book.id  %}">EDIT</a>|
+                                <a href="{% url 'delete' book.id %}">DELETE</a>
+                            </p>
+                            {% endif %}
+                        </div><br><br>
+                        <div>
+                            <p>{{ book.title }}</p>
                         </div>
-                    </b>
-                    <div id="desc">
-                        <p style="max-height: 100px;overflow-y: auto;max-width: 200px;">{{ book.description }}</p>
+                        
+                        
+                    
+                        <a href="{% url 'read' book.id %}">
+                            <img src="{{ book.cover.url }} " alt="{{ book.title }}" style="width: 200px; height: 150px;border-radius: 20px;object-fit:cover;">
+                        </a>
+                        <br>
+                        <b><p style="width: 200px;max-height: 20px;">author : <a href="{% url 'profile' book.author %}" >{{ book.author }}</a>
+                            <br>
+                            <small>{{ book.date_added|timesince }} ago</small></p>
+                            <div style="width: 200px;">
+                                genre : 
+                                {% for genre in book.genre.all %}
+                                    {{ genre }}
+                                    {% if not forloop.last %}
+                                    ,
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </b>
+                        <div id="desc">
+                            <p style="max-height: 100px;overflow-y: auto;max-width: 200px;">{{ book.description }}</p>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         </div>
 

@@ -11,9 +11,17 @@ from django.contrib import messages
 @login_required(login_url='login')
 def Home(request):
     genres = Genre.objects.all()
-    
 
-    context = {'genres':genres}
+    search = request.GET.get('search') or ''
+
+    books = Book.objects.filter(
+        Q(author__username__icontains = search) |
+        Q(title__icontains = search) |
+        Q(description__icontains = search) |
+        Q(body__icontains = search)
+    ).all
+
+    context = {'genres':genres, 'books':books}
     return render(request, 'main/home.html', context)
 
 @login_required(login_url='login')
