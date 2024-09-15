@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-10 formS">
+    <form method="post">
+        <h3 class="display-3 text-center">Login <p class="badge bg-warning">IN</p></h3>
+        {% csrf_token %}
+    
+        <div class="form-group">
+            <label for="username">Username</label><br>
+            <input type="text" name="username" placeholder="Enter Username" class="form-control">
+        </div>
+    
+        <br>
+    
+        <div class="form-group">
+            <label for="password">Password</label><br>
+            <input type="password" name="password" placeholder="Enter Password" class="form-control">
+        </div>
+    
+            <br>
+            
+        <button type="submit" class="btn btn-primary">Register</button><br>
+        <p>Don't have an account ? <a href="{% url 'signUp' %}">Sign Up Here</a></p>
+    </form>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-10 formS">
+        <form method="post">
+            <h3 class="display-3 text-center">Sign <p class="badge bg-warning">UP</p></h3>
+            {% csrf_token %}
+        
+            {% for field in form %}
+                {% if field.label != "Password-based authentication" %}
+                    <div class="form-group">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="error-message">
+                                {% for error in field.errors %}
+                                    <p class="form-label">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div><br>
+                {% endif %}
+            {% endfor %}
+        
+        
+            <button type="submit" class="btn btn-primary">Register</button><br>
+            <p>Already have an account ? <a href="{% url 'login' %}">login here</a></p>
+        </form>
+    </div>
+{% endblock %}
