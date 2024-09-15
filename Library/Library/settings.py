@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -129,9 +130,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 STATICFILES_DIRS = [
     os.path.join(
         BASE_DIR, 'static'
@@ -140,3 +138,12 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+AWS_ACCESS_KEY_ID = 'AKIA4ZPZVSAPHJGUFWVD'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'samuelgoldlibrary'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3bobto3.S3Boto3Storage'
+AWS_S3_REGION_NAME = 'eu-north-1'
+
+MEDIA_URL = '/media/'
+
