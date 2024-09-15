@@ -145,5 +145,4 @@ AWS_STORAGE_BUCKET_NAME = 'samuelgoldlibrary'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3bobto3.S3Boto3Storage'
 AWS_S3_REGION_NAME = 'eu-north-1'
 
-MEDIA_URL = '/media/'
-
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/images/'
