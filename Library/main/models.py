@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 class Genre(models.Model):
 
@@ -12,7 +13,7 @@ class Book(models.Model):
     
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=300)
-    cover = models.ImageField(upload_to='images/', default="images/all.jpg")
+    cover = CloudinaryField('images')
     description = models.TextField(max_length=50000, null=True, blank=True)
     genre = models.ManyToManyField(Genre, related_name='genres', blank=True)
     body = models.TextField(null=True, blank=True, default="Book")
