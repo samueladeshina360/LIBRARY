@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'storages',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -140,11 +142,13 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-AWS_ACCESS_KEY_ID = 'AKIA4ZPZVSAPHJGUFWVD'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'samuelgoldlibrary'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3bobto3.S3Boto3Storage'
-AWS_S3_REGION_NAME = 'eu-north-1'
+CLOUDINARY_STORAGE = {
 
-MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/images/'
+    'CLOUD_NAME' : 'dltxm4kfk',
+    'API_KEY' : '483234829457958',
+    'API_SECRET' : 'kwL6Kwzl07qdNyYjB77tePdh2-U',
+
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
