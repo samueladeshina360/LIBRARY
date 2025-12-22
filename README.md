@@ -64,15 +64,13 @@ Follow these steps to run the project locally:
 ## Project Structure (Typical Django Layout)
 
 - manage.py
-- <app_name>/
+- Library/
   - migrations/
   - models.py
   - views.py
   - urls.py
   - templates/
   - static/
-
-Adjust file names and paths according to this repository's app layout.
 
 ## Contributing
 
@@ -85,7 +83,3 @@ See the LICENSE file in this repository for license information. If no license i
 ## Contact
 
 Repository owner: samueladeshina360 (https://github.com/samueladeshina360)
-
----
-
-If you'd like, I can further expand this README with screenshots, example API endpoints, model diagrams, or a demo workflow. Please tell me which details you want emphasized or added.
